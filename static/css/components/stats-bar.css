@@ -1,0 +1,26 @@
+/* 统计信息栏样式 */
+.stats-group {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.stats-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.stats-item i {
+    color: #1890ff;
+    font-size: 0.9rem;
+}
+
+.stats-item span:last-child {
+    font-weight: 600;
+    color: #333;
+}

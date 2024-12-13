@@ -1,0 +1,57 @@
+/* 搜索框组件样式 */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.ant-input-affix-wrapper {
+    width: 100%;
+    position: relative;
+    display: inline-flex;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.ant-input-prefix {
+    margin-right: 8px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.ant-input {
+    border: none;
+    outline: none;
+    padding: 4px 11px;
+    width: 100%;
+    background: transparent;
+}
+
+.ant-input-clear-icon {
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.ant-input-clear-icon:hover {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.ant-input-affix-wrapper:hover {
+    border-color: #4096ff;
+}
+
+.ant-input-affix-wrapper:focus-within {
+    border-color: #4096ff;
+    box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+    outline: 0;
+}

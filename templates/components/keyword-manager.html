@@ -1,0 +1,97 @@
+<!-- 关键词管理模态框 -->
+<div class="modal fade" id="keywordsModal" tabindex="-1" role="dialog" aria-labelledby="keywordsModalTitle">
+    <div class="modal-dialog modal-keywords" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="keywordsModalTitle">关键词管理</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭" id="closeKeywordsModal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <button class="btn btn-primary btn-sm me-2" onclick="keywordManager.addNewCategory()">
+                            <i class="fas fa-plus"></i> 添加分类
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="keywordManager.batchAddKeywords(document.getElementById('categorySelect').value)" id="batchAddBtn" disabled>
+                            <i class="fas fa-upload"></i> 批量导入
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="keywords-list" role="list" aria-label="关键词列表">
+                    <!-- 关键词列表将动态生成 -->
+                </div>
+                
+                <div class="add-keyword-form mt-3" style="display: none;">
+                    <div class="input-group">
+                        <input type="text" id="newKeyword" class="form-control" placeholder="输入新关键词" aria-label="新关键词">
+                        <button class="btn btn-primary" onclick="keywordManager.addKeyword()" aria-label="添加关键词">
+                            <i class="fas fa-plus"></i> 添加
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalBtn">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 添加模态框事件监听
+document.addEventListener('DOMContentLoaded', function() {
+    const keywordsModal = document.getElementById('keywordsModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const closeKeywordsModal = document.getElementById('closeKeywordsModal');
+    
+    if (keywordsModal) {
+        // 在模态框打开时
+        keywordsModal.addEventListener('shown.bs.modal', function () {
+            // 将焦点设置到第一个可聚焦元素
+            const firstFocusable = keywordsModal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (firstFocusable) {
+                firstFocusable.focus();
+            }
+        });
+
+        // 在模态框即将隐藏时
+        keywordsModal.addEventListener('hide.bs.modal', function (event) {
+            // 移除所有按钮的焦点
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+            
+            // 将焦点设置到触发模态框的元素或body
+            const triggerElement = document.querySelector('[data-bs-target="#keywordsModal"]') || 
+                                 document.querySelector('[href="#keywordsModal"]');
+            if (triggerElement) {
+                triggerElement.focus();
+            } else {
+                document.body.focus();
+            }
+        });
+
+        // 处理 Escape 键
+        keywordsModal.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                const closeBtn = document.getElementById('closeModalBtn');
+                if (closeBtn) {
+                    closeBtn.click();
+                }
+            }
+        });
+    }
+
+    // 确保关闭按钮点击时正确处理焦点
+    [closeModalBtn, closeKeywordsModal].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', function(event) {
+                // 在关闭之前移除焦点
+                this.blur();
+            });
+        }
+    });
+});
+</script>

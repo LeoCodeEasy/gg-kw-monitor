@@ -1,0 +1,48 @@
+<!-- 筛选栏 -->
+<div class="filter-bar">
+    <div class="filter-container">
+        <!-- 国家标签 -->
+        <div class="market-tabs" id="marketTabs">
+            <div class="market-tab" data-market="">全部</div>
+            <!-- 动态生成国家标签 -->
+        </div>
+
+        <!-- 分类和搜索 -->
+        <div class="search-box">
+            <span class="ant-input-affix-wrapper ant-input-search">
+                <input type="text" class="ant-input" id="keywordFilter" placeholder="搜索关键词或标题">
+                <button class="clear-search-btn" id="clearSearch" style="display: none;">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </span>
+        </div>
+
+        <!-- 操作按钮 -->
+        <div class="action-buttons">
+            <button class="btn btn-primary btn-sm btn-icon" onclick="keywordManager.openKeywordsEditor()">
+                <i class="fas fa-list"></i>
+                <span>关键词</span>
+            </button>
+            <button class="btn btn-primary btn-sm btn-icon" onclick="startCrawl()">
+                <i class="fas fa-sync-alt"></i>
+                <span>爬取</span>
+            </button>
+        </div>
+
+        <!-- 统计数据 -->
+        <div class="stats-group">
+            <div class="stats-item">
+                <i class="fas fa-key"></i>
+                <span id="totalKeywords">0</span>
+            </div>
+            <div class="stats-item">
+                <i class="fas fa-bullhorn"></i>
+                <span id="totalAds">0</span>
+            </div>
+            <div class="stats-item">
+                <i class="fas fa-clock"></i>
+                <span id="lastUpdated">-</span>
+            </div>
+        </div>
+    </div>
+</div>
